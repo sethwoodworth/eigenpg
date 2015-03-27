@@ -9,6 +9,13 @@ from login import auth
 def append(gen, target):
     target.append(gen.next())
 
+def write_html(path, content64):
+    """ a path to write html to
+    and some base64 content to fill it """
+    print path
+    print base64.b64decode(content64)
+    pass
+
 def main():
 
     g = auth()
@@ -20,7 +27,7 @@ def main():
     # get a html file
     h = ss[20]
 
-    html_file = h.repository.file_contents(h.path).content
-    print html_file
+    file_content = h.repository.file_contents(h.path).content
+    write_html(h.path, file_content)
 
 main()
